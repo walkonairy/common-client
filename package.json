@@ -1,8 +1,56 @@
 {
-  "name": "common-client",
+  "name": "@asow/common-client",
   "version": "0.1.0",
-  "private": true,
-  "dependencies": {
+  "private": false,
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/asowes/common-client"
+  },
+  "bugs": {
+    "url": "https://github.com/asowes/common-client/issues"
+  },
+  "license": "MIT",
+  "keywords": [
+    "common"
+  ],
+  "author": {
+    "name": "asow",
+    "email": "i_asow@163.com",
+    "url": "https://github.com/asowes"
+  },
+  "main": "./lib/index",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "start": "node scripts/start.js",
+    "build": "rm -rf ./lib && tsc",
+    "test": "node scripts/test.js",
+    "publish": "npm publish --access public"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
     "@babel/core": "^7.16.0",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.3",
     "@svgr/webpack": "^5.5.0",
@@ -62,29 +110,6 @@
     "webpack-dev-server": "^4.6.0",
     "webpack-manifest-plugin": "^4.0.2",
     "workbox-webpack-plugin": "^6.4.1"
-  },
-  "scripts": {
-    "start": "node scripts/start.js",
-    "build": "node scripts/build.js",
-    "test": "node scripts/test.js"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
   },
   "jest": {
     "roots": [
