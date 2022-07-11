@@ -1,25 +1,73 @@
 {
-  "name": "common-client",
-  "version": "0.1.0",
-  "private": true,
+  "name": "@asow/common-client",
+  "version": "0.1.4",
+  "private": false,
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/asowes/common-client"
+  },
+  "bugs": {
+    "url": "https://github.com/asowes/common-client/issues"
+  },
+  "license": "MIT",
+  "keywords": [
+    "common"
+  ],
+  "author": {
+    "name": "asow",
+    "email": "i_asow@163.com",
+    "url": "https://github.com/asowes"
+  },
+  "module": "dist/index.js",
+  "main": "dist/index.js",
+  "typings": "dist/type/src/index.d.ts",
+  "files": [
+    "dist/"
+  ],
   "dependencies": {
+    "@types/node": "^16.7.13",
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "typescript": "^4.4.2"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@rollup/plugin-babel": "^5.3.1",
+    "@rollup/plugin-commonjs": "^22.0.1",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^13.3.0",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^13.0.0",
     "@testing-library/user-event": "^13.2.1",
     "@types/jest": "^27.0.1",
-    "@types/node": "^16.7.13",
-    "@types/react": "^18.0.0",
-    "@types/react-dom": "^18.0.0",
+    "@vitejs/plugin-react": "^1.3.2",
     "prettier": "^2.7.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
-    "typescript": "^4.4.2",
+    "rollup": "^2.76.0",
+    "rollup-plugin-dts": "^4.2.2",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-postcss": "^4.0.2",
+    "rollup-plugin-typescript2": "^0.32.1",
+    "sass": "^1.53.0",
+    "vite": "^2.9.14",
     "web-vitals": "^2.1.0"
   },
   "scripts": {
+    "dev": "vite",
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "yarn clean && rollup -c",
+    "update": "yarn build:esm && npm publish",
+    "build:esm": "yarn clean && cross-env BABEL_ENV=esm rollup -c",
+    "clean": "rimraf ./dist",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
