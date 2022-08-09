@@ -1,6 +1,6 @@
 {
-  "name": "@asow/ui",
-  "version": "0.1.15",
+  "name": "@asow/common-client",
+  "version": "0.2.1",
   "private": false,
   "publishConfig": {
     "access": "public",
@@ -10,7 +10,6 @@
     "origin": "originLib",
     "lib": "lib"
   },
-  "files": ["lib"],
   "repository": {
     "type": "git",
     "url": "https://github.com/asowes/common-client"
@@ -27,7 +26,6 @@
     "email": "i_asow@163.com",
     "url": "https://github.com/asowes"
   },
-  "main": "index.js",
   "dependencies": {
     "@chakra-ui/react": "^2.2.4",
     "@emotion/css": "^11.9.0",
@@ -77,9 +75,9 @@
   "scripts": {
     "dev": "vite",
     "start": "react-scripts start",
-    "build": "yarn clean && rollup -c ./scripts/rollup.config.js",
+    "build": "yarn run clean && rollup -c",
     "update": "yarn build:esm && npm publish",
-    "clean": "rimraf ./dist",
+    "clean": "rimraf ./lib",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "pub": "node ./scripts/publish.js"
