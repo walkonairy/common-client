@@ -1,6 +1,6 @@
 {
-  "name": "@asow/common-client",
-  "version": "0.1.4",
+  "name": "@asow/common-client-ts",
+  "version": "0.1.3",
   "private": false,
   "publishConfig": {
     "access": "public",
@@ -11,7 +11,7 @@
     "url": "https://github.com/asowes/common-client"
   },
   "bugs": {
-    "url": "https://github.com/asowes/common-client/issues"
+    "url": "https://github.com/asowes/common-cliendt/issues"
   },
   "license": "MIT",
   "keywords": [
@@ -22,6 +22,7 @@
     "email": "i_asow@163.com",
     "url": "https://github.com/asowes"
   },
+  "type": "module",
   "module": "dist/index.js",
   "main": "dist/index.js",
   "typings": "dist/type/src/index.d.ts",
@@ -29,11 +30,16 @@
     "dist/"
   ],
   "dependencies": {
-    "@types/node": "^16.7.13",
-    "@types/react": "^18.0.0",
-    "@types/react-dom": "^18.0.0",
+    "@chakra-ui/react": "^2.2.4",
+    "@emotion/css": "^11.9.0",
+    "@emotion/react": "^11.9.3",
+    "@emotion/styled": "^11.9.3",
+    "@reduxjs/toolkit": "^1.8.3",
+    "axios": "^0.27.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-redux": "^8.0.2",
+    "sass": "^1.54.3",
     "typescript": "^4.4.2"
   },
   "peerDependencies": {
@@ -41,35 +47,43 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "@babel/plugin-external-helpers": "^7.18.6",
+    "@babel/plugin-transform-runtime": "^7.18.6",
+    "@babel/preset-env": "^7.18.6",
+    "@babel/preset-react": "^7.18.6",
+    "@babel/preset-typescript": "^7.16.7",
     "@rollup/plugin-babel": "^5.3.1",
     "@rollup/plugin-commonjs": "^22.0.1",
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^13.3.0",
+    "rollup-plugin-typescript2": "^0.31.2",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^13.0.0",
     "@testing-library/user-event": "^13.2.1",
-    "@types/jest": "^27.0.1",
     "@vitejs/plugin-react": "^1.3.2",
     "prettier": "^2.7.1",
     "react-scripts": "5.0.1",
     "rollup": "^2.76.0",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-cleanup": "^3.2.1",
     "rollup-plugin-dts": "^4.2.2",
+    "rollup-plugin-import-css": "^3.0.3",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^4.0.2",
-    "rollup-plugin-typescript2": "^0.32.1",
-    "sass": "^1.53.0",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-uglify": "^6.0.4",
     "vite": "^2.9.14",
     "web-vitals": "^2.1.0"
   },
   "scripts": {
     "dev": "vite",
     "start": "react-scripts start",
-    "build": "yarn clean && rollup -c",
+    "build": "yarn run clean && rollup -c",
     "update": "yarn build:esm && npm publish",
-    "build:esm": "yarn clean && cross-env BABEL_ENV=esm rollup -c",
     "clean": "rimraf ./dist",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "pub": "node ./scripts/publish.js"
   },
   "eslintConfig": {
     "extends": [

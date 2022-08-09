@@ -37,8 +37,8 @@
   "exclude": [
     "node_modules",
     "lib",
-    "components/**/*.stories.tsx",
-    "components/**/*.test.tsx",
-    "components/**/__example__"
+    "packages/**/*.stories.tsx",
+    "packages/**/*.test.tsx",
+    "packages/**/__example__"
   ]
 }

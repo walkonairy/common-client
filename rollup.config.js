@@ -7,21 +7,23 @@ import typescript from "rollup-plugin-typescript2";
 import postcss from "rollup-plugin-postcss";
 import json from "@rollup/plugin-json";
 import babel from "@rollup/plugin-babel";
+// import packageJson from './package.json'
 import dts from "rollup-plugin-dts";
 import sass from "sass";
 
 // 入口
-
 const entry = "src/index.ts";
-const componentsDir = "src/components";
+const componentsDir = "src/packages";
 const componentsName = fs.readdirSync(path.resolve(componentsDir));
 const componentsEntry = componentsName.map(
   (name) => `${componentsDir}/${name}/index.ts`
 );
 
+console.log("=============", componentsEntry, "=============");
+
 // 环境变量
 const isProd = process.env.NODE_ENV === "production";
-const BABEL_ENV = process.env.BABEL_ENV || "esm";
+const BABEL_ENV = process.env.BABEL_ENV;
 
 // Babel配置
 const babelOptions = {
@@ -43,9 +45,14 @@ const commonPlugins = [
 
 // 忽略文件
 const externalConfig = [
-  (id) => /\/__expample__|App.tsx/.test(id),
+  (id) => /\/__expample__|main.tsx/.test(id),
   "react",
   "react-dom",
+  "classname",
+  "react-is",
+  "@fortawesome/fontawesome-svg-core",
+  "@fortawesome/free-solid-svg-icons",
+  "@fortawesome/react-fontawesome",
   "**/node_modules/**",
 ];
 
@@ -93,35 +100,31 @@ const esmOutput = {
 };
 
 export default () => {
-  console.log(`=========== ${BABEL_ENV} ===========`);
-  switch (BABEL_ENV) {
-    case "esm":
-      return [
-        {
-          input: [entry, ...componentsEntry],
-          output: { ...esmOutput, dir: "dist/", format: "es" },
-          external: externalConfig,
-          plugins: [
-            postcss({
-              extract: true,
-              process: processScss,
-            }),
-            ...commonPlugins,
-          ],
-        },
-        {
-          input: [entry, ...componentsEntry],
-          output: { ...esmOutput, dir: "dist/type", format: "es" },
-          external: externalConfig,
-          plugins: [
-            postcss({
-              extract: true,
-              process: processScss,
-            }),
-            ...commonPlugins,
-            dts(),
-          ],
-        },
-      ];
-  }
+  return [
+    {
+      input: [entry, ...componentsEntry],
+      output: { ...esmOutput, dir: "dist/", format: "es" },
+      external: externalConfig,
+      plugins: [
+        postcss({
+          extract: true,
+          process: processScss,
+        }),
+        ...commonPlugins,
+      ],
+    },
+    {
+      input: [entry, ...componentsEntry],
+      output: { ...esmOutput, dir: "dist/type", format: "es" },
+      external: externalConfig,
+      plugins: [
+        postcss({
+          extract: true,
+          process: processScss,
+        }),
+        ...commonPlugins,
+        dts(),
+      ],
+    },
+  ];
 };
