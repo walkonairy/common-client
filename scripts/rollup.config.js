@@ -1,20 +1,21 @@
-const path = require("path");
-const fs = require("fs");
-const babel = require("rollup-plugin-babel");
-const { nodeResolve } = require("@rollup/plugin-node-resolve");
-const commonjs = require("@rollup/plugin-commonjs");
-const { uglify } = require("rollup-plugin-uglify");
-const directoriesLib = require("../package.json").directories.lib;
-const origin = require("../package.json").directories.origin;
+import * as path from "path";
+import * as fs from "fs";
 
+import React from "react";
+import ReactDOM from "react-dom";
+
+import babel from "@rollup/plugin-babel";
+import nodeResolve from "@rollup/plugin-node-resolve";
+import commonjs from "@rollup/plugin-commonjs";
+import { uglify } from "rollup-plugin-uglify";
 import { terser } from "rollup-plugin-terser";
 import css from "rollup-plugin-import-css";
 import cleanup from "rollup-plugin-cleanup";
 import typescript from "rollup-plugin-typescript2";
 import dts from "rollup-plugin-dts";
 
-import React from "react";
-import ReactDOM from "react-dom";
+const directoriesLib = require("../package.json").directories.lib;
+const origin = require("../package.json").directories.origin;
 
 function mkdirsSync(dirname) {
   //console.log(dirname);
@@ -31,7 +32,7 @@ function delDir(path) {
   let files = [];
   if (fs.existsSync(path)) {
     files = fs.readdirSync(path);
-    files.forEach((file, index) => {
+    files.forEach((file) => {
       let curPath = path + "/" + file;
       if (fs.statSync(curPath).isDirectory()) {
         delDir(curPath);
@@ -190,9 +191,6 @@ const baseInputs = entrys
         output: {
           entryFileNames: `[name].ts`,
           dir: dir,
-          format: "umd",
-          sourcemap: false,
-          name: fileNameWithOutPostfix + "-[name]",
         },
         plugins: [dts()],
       },

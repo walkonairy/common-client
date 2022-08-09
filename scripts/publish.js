@@ -5,6 +5,7 @@ const fs = require("fs");
 
 const directoriesLib = packageJson.directories.lib;
 const directoriesOrigin = packageJson.directories.origin;
+const projectName = packageJson.name;
 
 function runCommand(command, cwd) {
   return new Promise((resolve) => {
@@ -35,7 +36,7 @@ function runCommand(command, cwd) {
   const scriptPath = path.resolve(__dirname, "./");
   const originPath = path.resolve(__dirname, "..", directoriesOrigin);
 
-  const packageInfo = await runCommand("npm view @asow/ui --json", cwd);
+  const packageInfo = await runCommand(`npm view ${projectName} --json`, cwd);
   const { versions } = JSON.parse(packageInfo);
   packageJson.version = versions[versions.length - 1];
 

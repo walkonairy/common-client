@@ -1,4 +1,4 @@
-export { default as Button } from "../originLib/packages/button";
-export type { ButtonProps } from "../originLib/packages/button";
+export { default as Button } from "./components/button";
+export type { ButtonProps } from "./components/button";
 
 export * from "../originLib/utils";
