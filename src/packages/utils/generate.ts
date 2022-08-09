@@ -9,9 +9,8 @@ export const NumAdd = (x: number, y: number): number => {
 };
 
 export const RandomNumArray = (length: number = 999) => {
-  let nums: any[] = [];
-  // @ts-ignore
-  const arr = [...Array(length).keys()] as never[];
+  let nums: number[] = [];
+  const arr = Array.from({ length }).map((_, i) => i);
   const res = [];
   while (arr.length) {
     const randomIndex = Math.random() * arr.length - 1;
