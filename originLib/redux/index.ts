@@ -1,4 +1,4 @@
-import { useSelector, useDispatch } from "react-redux";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { useAppDispatch, useAppSelector } from "./hooks";
 
-export { useSelector, useDispatch, createSlice, createAsyncThunk };
+export { useAppDispatch, useAppSelector, createSlice, createAsyncThunk };

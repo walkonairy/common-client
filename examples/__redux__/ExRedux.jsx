@@ -4,12 +4,12 @@ import {
   changeDeposit,
 } from "/originLib/redux/slices/userSlice";
 import { updateUserId } from "/originLib/redux/slices/localStoreSlice";
-import { useSelector, useDispatch } from "/originLib/redux";
+import { useAppSelector, useAppDispatch } from "/originLib/redux";
 
 function ExRedux() {
-  const dispatch = useDispatch();
-  const user = useSelector((state) => state.user);
-  const store = useSelector((state) => state.store);
+  const dispatch = useAppDispatch();
+  const user = useAppSelector((state) => state.user);
+  const store = useAppSelector((state) => state.store);
 
   useEffect(() => {
     console.log(user);

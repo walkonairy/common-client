@@ -1,12 +1,17 @@
-import React, { useMemo } from "react";
+import React from "react";
 import { ChakraProvider } from "@chakra-ui/react";
 import { Provider as ReduxProvider } from "react-redux";
-import createStore from "../redux/store";
+import { combineReducers } from "@reduxjs/toolkit";
+
+import { reducers, store } from "../redux/store";
 
 function App({ Component, extraReducer = {} }) {
-  const store = useMemo(() => {
-    return createStore(undefined, extraReducer);
-  }, [extraReducer]);
+  const _reducers = combineReducers({
+    ...reducers,
+    ...extraReducer,
+  });
+
+  store.replaceReducer(_reducers);
 
   return (
     <React.Fragment>
