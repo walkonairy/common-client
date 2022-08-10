@@ -138,13 +138,6 @@ const baseInputs = entrys
       return id.indexOf(relative) < 0;
     };
 
-    console.log(
-      "===============fileNameWithOutPostfix",
-      fileNameWithOutPostfix
-    );
-    console.log("===============relative", relative);
-    console.log("===============dir", dir);
-
     return [
       {
         input: {
@@ -189,8 +182,9 @@ const baseInputs = entrys
         },
         external: external,
         output: {
-          entryFileNames: `[name].ts`,
+          entryFileNames: `[name].d.ts`,
           dir: dir,
+          format: "es",
         },
         plugins: [dts()],
       },

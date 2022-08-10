@@ -18,7 +18,12 @@ export interface BaseButtonProps {
 
 export type ButtonProps = Partial<AnchorButtonProps>;
 
+import { useAppSelector, useAppDispatch } from "originLib/redux/hooks";
+
 const Button: React.FC<ButtonProps> = (props) => {
+  const count = useAppSelector((state) => state.user);
+  const dispatch = useAppDispatch();
+
   return (
     <React.Fragment>
       <div>123</div>

@@ -10,7 +10,9 @@
     "origin": "originLib",
     "lib": "lib"
   },
-  "files": ["lib"],
+  "files": [
+    "lib"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/asowes/common-client"
@@ -35,6 +37,7 @@
     "@emotion/styled": "^11.9.3",
     "@reduxjs/toolkit": "^1.8.3",
     "axios": "^0.27.2",
+    "framer-motion": "^7.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.2",
@@ -56,13 +59,13 @@
     "prettier": "^2.7.1",
     "react-scripts": "5.0.1",
     "rollup": "^2.76.0",
-    "rollup-plugin-typescript2": "^0.31.2",
     "rollup-plugin-babel": "^4.4.0",
     "rollup-plugin-cleanup": "^3.2.1",
     "rollup-plugin-dts": "^4.2.2",
     "rollup-plugin-import-css": "^3.0.3",
     "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-typescript2": "^0.31.2",
     "rollup-plugin-uglify": "^6.0.4",
     "vite": "^2.9.14",
     "web-vitals": "^2.1.0"
