@@ -5,8 +5,9 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 import babel from "@rollup/plugin-babel";
-import nodeResolve from "@rollup/plugin-node-resolve";
-import commonjs from "@rollup/plugin-commonjs";
+import commonjs from "rollup-plugin-commonjs";
+import nodeResolve from "rollup-plugin-node-resolve";
+import peerDepsExternal from "rollup-plugin-peer-deps-external";
 import { uglify } from "rollup-plugin-uglify";
 import { terser } from "rollup-plugin-terser";
 import css from "rollup-plugin-import-css";
@@ -152,8 +153,9 @@ const baseInputs = entrys
           name: fileNameWithOutPostfix + "-[name]",
         },
         plugins: [
-          typescript(),
+          typescript({ check: false }),
           cleanup(),
+          peerDepsExternal(),
           babel({
             exclude: "**/node_modules/**",
             runtimeHelpers: true,
