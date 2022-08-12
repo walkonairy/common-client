@@ -23,6 +23,7 @@ export type AnchorInputProps = {
   Omit<AnchorHTMLAttributes<any>, "type" | "onClick">;
 
 export interface BaseInputProps {
+  id?: string;
   className?: string;
   disabled?: boolean;
   label?: string;
@@ -34,6 +35,7 @@ export type InputProps = Partial<AnchorInputProps>;
 
 const Input = forwardRef((props: InputProps, ref: React.RefObject<any>) => {
   const {
+    id,
     label = "Last Name",
     suffixIcon = "icon",
     onClickSuffixIcon,
@@ -51,8 +53,12 @@ const Input = forwardRef((props: InputProps, ref: React.RefObject<any>) => {
         <InputBorder>
           <InputBox>
             <InputContent>
-              {label && <InputLabel htmlFor="input-label">{label}</InputLabel>}
-              <_Input id="input-label" {...rest} ref={ref} />
+              {label && (
+                <InputLabel htmlFor={id || label || "input-label"}>
+                  {label}
+                </InputLabel>
+              )}
+              <_Input id={id || label || "input-label"} {...rest} ref={ref} />
             </InputContent>
             {suffixIcon && (
               <InputIcon onClick={_onClickSuffixIcon}>{suffixIcon}</InputIcon>

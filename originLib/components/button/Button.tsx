@@ -1,4 +1,10 @@
-import React, { AnchorHTMLAttributes, MouseEventHandler } from "react";
+import React, {
+  AnchorHTMLAttributes,
+  forwardRef,
+  MouseEventHandler,
+} from "react";
+
+import "./button.css";
 
 export type AnchorButtonProps = {
   href: string;
@@ -14,16 +20,21 @@ export interface BaseButtonProps {
   danger?: boolean;
   disabled?: boolean;
   loading?: boolean;
+  children?: React.ReactElement;
 }
 
 export type ButtonProps = Partial<AnchorButtonProps>;
 
-const Button: React.FC<ButtonProps> = (props) => {
+const Button = forwardRef((props: ButtonProps, ref: React.RefObject<any>) => {
+  const { children } = props;
+
   return (
     <React.Fragment>
-      <div>123</div>
+      <button className="button" ref={ref}>
+        {children}
+      </button>
     </React.Fragment>
   );
-};
+});
 
 export default Button;

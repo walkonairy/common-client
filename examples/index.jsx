@@ -6,6 +6,7 @@ import { Provider } from "react-redux";
 import ExRedux from "./__redux__/ExRedux";
 import { store } from "../originLib/redux/store";
 import ExInput from "./__input__/ExInput";
+import EXButton from "./__button__/ExButton";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -14,6 +15,7 @@ root.render(
     <Provider store={store}>
       {/*<ExRedux />*/}
       <ExInput />
+      <EXButton />
     </Provider>
   </React.Fragment>
 );
