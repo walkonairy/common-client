@@ -26,11 +26,11 @@ export interface BaseButtonProps {
 export type ButtonProps = Partial<AnchorButtonProps>;
 
 const Button = forwardRef((props: ButtonProps, ref: React.RefObject<any>) => {
-  const { children } = props;
+  const { children, ...rest } = props;
 
   return (
     <React.Fragment>
-      <button className="button" ref={ref}>
+      <button className="button" ref={ref} {...rest}>
         {children}
       </button>
     </React.Fragment>
