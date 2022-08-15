@@ -4,6 +4,9 @@ import React, {
   forwardRef,
   MouseEvent,
 } from "react";
+
+import { useMediaQuery } from "@chakra-ui/react";
+
 import {
   InputWrapper,
   InputBox,
@@ -14,6 +17,7 @@ import {
   InputBorder,
 } from "./Input.styled";
 import "./input.css";
+import { theme } from "../theme";
 
 export type AnchorInputProps = {
   href: string;
@@ -43,6 +47,11 @@ const Input = forwardRef((props: InputProps, ref: React.RefObject<any>) => {
     ...rest
   } = props;
 
+  const [lessThanEqual640] = useMediaQuery(
+    `(max-width: ${theme.breakpoints.md})`
+  );
+  console.log(lessThanEqual640);
+
   const _onClickSuffixIcon = (e: MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
     onClickSuffixIcon && onClickSuffixIcon(e);
@@ -59,7 +68,12 @@ const Input = forwardRef((props: InputProps, ref: React.RefObject<any>) => {
                   {label}
                 </InputLabel>
               )}
-              <_Input id={id || label || "input-label"} {...rest} ref={ref} />
+              <_Input
+                id={id || label || "input-label"}
+                placeholder={lessThanEqual640 ? label : ""}
+                {...rest}
+                ref={ref}
+              />
             </InputContent>
             {suffixIcon && (
               <InputIcon onClick={_onClickSuffixIcon}>{suffixIcon}</InputIcon>
