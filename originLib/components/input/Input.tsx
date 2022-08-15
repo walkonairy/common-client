@@ -13,6 +13,7 @@ import {
   InputIcon,
   InputBorder,
 } from "./Input.styled";
+import "./input.css";
 
 export type AnchorInputProps = {
   href: string;
@@ -20,7 +21,7 @@ export type AnchorInputProps = {
   onClick?: MouseEventHandler<HTMLElement>;
 } & BaseInputProps &
   // 去除AnchorHTMLAttributes<any>中的type和onClick
-  Omit<AnchorHTMLAttributes<any>, "type" | "onClick">;
+  Omit<AnchorHTMLAttributes<any>, "onClick">;
 
 export interface BaseInputProps {
   id?: string;

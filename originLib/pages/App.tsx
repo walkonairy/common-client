@@ -4,11 +4,8 @@ import { Provider as ReduxProvider } from "react-redux";
 import { combineReducers } from "@reduxjs/toolkit";
 
 import { reducers, store } from "../redux/store";
-import { fetchFilter } from "../helper/fetchFilter";
 
 function App({ Component, extraReducer = {} }) {
-  fetchFilter();
-
   const _reducers = combineReducers({
     ...reducers,
     ...extraReducer,
