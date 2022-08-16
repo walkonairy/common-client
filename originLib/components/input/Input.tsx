@@ -39,18 +39,11 @@ export interface BaseInputProps {
 export type InputProps = Partial<AnchorInputProps>;
 
 const Input = forwardRef((props: InputProps, ref: React.RefObject<any>) => {
-  const {
-    id,
-    label = "Last Name",
-    suffixIcon = "icon",
-    onClickSuffixIcon,
-    ...rest
-  } = props;
+  const { id, label = "", suffixIcon = "", onClickSuffixIcon, ...rest } = props;
 
   const [lessThanEqual640] = useMediaQuery(
     `(max-width: ${theme.breakpoints.md})`
   );
-  console.log(lessThanEqual640);
 
   const _onClickSuffixIcon = (e: MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
