@@ -26,12 +26,25 @@ export interface BaseButtonProps {
 export type ButtonProps = Partial<AnchorButtonProps>;
 
 const Button = forwardRef((props: ButtonProps, ref: React.RefObject<any>) => {
-  const { children, ...rest } = props;
+  const { children, loading = false, ...rest } = props;
 
   return (
     <React.Fragment>
+      {/*<button className="button" ref={ref} {...rest}>*/}
+      {/*  <span className="load loading activeLoading" />*/}
+      {/*  {children}*/}
+      {/*</button>*/}
       <button className="button" ref={ref} {...rest}>
-        {children}
+        <div className="btn-content">
+          {children}
+          {loading && (
+            <div className={`dot-${loading}`}>
+              <div className="dot bounce1" />
+              <div className="dot bounce2" />
+              <div className="dot bounce3" />{" "}
+            </div>
+          )}
+        </div>
       </button>
     </React.Fragment>
   );

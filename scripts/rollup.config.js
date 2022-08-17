@@ -155,10 +155,14 @@ const baseInputs = entrys
         plugins: [
           typescript({ check: false }),
           cleanup(),
-          peerDepsExternal(),
+          peerDepsExternal({
+            // includeDependencies: !isProd
+            includeDependencies: true,
+          }),
           babel({
             exclude: "**/node_modules/**",
-            runtimeHelpers: true,
+            // runtimeHelpers: true,
+            babelHelpers: "runtime",
             plugins: ["@babel/plugin-external-helpers"],
           }),
           nodeResolve({

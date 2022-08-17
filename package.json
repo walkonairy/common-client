@@ -31,6 +31,7 @@
   },
   "main": "index.js",
   "dependencies": {
+    "@babel/runtime": "^7.18.9",
     "@chakra-ui/react": "^2.2.4",
     "@emotion/css": "^11.9.0",
     "@emotion/react": "^11.9.3",
@@ -75,6 +76,7 @@
     "dev": "vite",
     "start": "react-scripts start",
     "build": "yarn clean && cross-env NODE_OPTIONS=--max-old-space-size=16000  rollup -c ./scripts/rollup.config.js",
+    "build:typed": "tsc --declaration --emitDeclarationOnly --noEmit false --outDir ./types",
     "update": "yarn build:esm && npm publish",
     "clean": "rimraf ./dist",
     "test": "react-scripts test",

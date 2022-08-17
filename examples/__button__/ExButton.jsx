@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "../../originLib";
 import { Box } from "@chakra-ui/react";
 
 function ExButton() {
+  const [loading, setLoading] = useState(false);
+
   return (
     <>
       {/* 隐藏input 的 value */}
@@ -23,9 +25,12 @@ function ExButton() {
       {/*  </button>*/}
       {/*</form>*/}
 
-      <Box p="24px">
-        <Button>Create account</Button>
+      <Box p="24px" bg="#000">
+        <Button loading={loading}>Create account</Button>
       </Box>
+
+      <Button onClick={() => setLoading(true)}>点我开loading</Button>
+      <Button onClick={() => setLoading(false)}>点我关loading</Button>
     </>
   );
 }
