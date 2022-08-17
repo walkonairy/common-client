@@ -19,7 +19,7 @@ function App({ Component, extraReducer = {} }) {
 
   return (
     <React.Fragment>
-      <ChakraProvider>
+      <ChakraProvider theme={_theme}>
         <ReduxProvider store={store}>
           <Component />
         </ReduxProvider>

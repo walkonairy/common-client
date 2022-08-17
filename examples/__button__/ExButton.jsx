@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "../../originLib";
-import { Flex } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 
 function ExButton() {
   return (
@@ -23,9 +23,9 @@ function ExButton() {
       {/*  </button>*/}
       {/*</form>*/}
 
-      <Flex w="50%">
+      <Box p="24px">
         <Button>Create account</Button>
-      </Flex>
+      </Box>
     </>
   );
 }

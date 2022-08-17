@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import { theme } from "../theme";
 
 export const InputWrapper = styled.div`
-  padding: 3px;
+  padding: 2px;
   border-radius: 18px;
   background: #333643;
   box-sizing: border-box;
@@ -11,14 +11,10 @@ export const InputWrapper = styled.div`
   &: active {
     box-shadow: 0 0 0 6px #dae8fd;
   }
-
-  @media (max-width: ${theme.breakpoints.md}) {
-    border-radius: 14px;
-  }
 `;
 
 export const InputBorder = styled.div`
-  padding: 8px 16px;
+  padding: 0px 16px;
   border: 2px solid transparent;
   border-radius: 15px;
   transition: all 0.3s;
@@ -28,13 +24,13 @@ export const InputBorder = styled.div`
   }
 
   @media (max-width: ${theme.breakpoints.lg}) {
-    padding: 6px 12px;
+    padding: 0px 12px;
   }
   @media (max-width: ${theme.breakpoints.md}) {
-    padding: 4px 12px;
+    padding: 0px 12px;
   }
   @media (max-width: ${theme.breakpoints.sm}) {
-    padding: 4px 8px;
+    padding: 0px 8px;
     border: 1px solid transparent;
   }
 `;
@@ -51,10 +47,13 @@ export const InputContent = styled.div`
 `;
 
 export const InputLabel = styled.label`
-  font-size: 13px;
+  font-size: 12px;
+  line-height: 12px;
+  margin-top: 8px;
   color: #8e96a4;
   cursor: text;
-  font-weight: bold;
+  font-weight: 600;
+  text-transform: capitalize;
 
   @media (max-width: ${theme.breakpoints.md}) {
     display: none;
@@ -67,24 +66,31 @@ export const _Input = styled.input`
   outline: unset;
   color: #ffffff;
   background: #333643;
-  padding: 2px 0;
+  box-sizing: border-box;
+  height: 36px;
 
   &:focus-visible,
   &:focus {
     border: unset;
     outline: unset;
   }
+  &::placeholder {
+    color: #8e96a4;
+  }
 
   @media (max-width: ${theme.breakpoints.lg}) {
     font-size: 16px;
+    height: 34px;
   }
   @media (max-width: ${theme.breakpoints.md}) {
     font-size: 14px;
-    padding: 1px 0;
+    height: 42px;
+    line-height: 42px;
   }
   @media (max-width: ${theme.breakpoints.sm}) {
-    padding: 1px 0;
     font-size: 12px;
+    height: 40px;
+    line-height: 40px;
   }
 `;
 
