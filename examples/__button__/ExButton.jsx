@@ -26,11 +26,23 @@ function ExButton() {
       {/*</form>*/}
 
       <Box p="24px" bg="#000">
-        <Button loading={loading}>Create account</Button>
+        <Button
+          id="main"
+          loading={loading}
+          disabled={loading}
+          onClick={() => {
+            setLoading(true);
+            console.log(123);
+          }}
+        >
+          Create account
+        </Button>
       </Box>
 
       <Button onClick={() => setLoading(true)}>点我开loading</Button>
-      <Button onClick={() => setLoading(false)}>点我关loading</Button>
+      <Button id="hidden" onClick={() => setLoading(false)}>
+        点我关loading
+      </Button>
     </>
   );
 }

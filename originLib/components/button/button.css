@@ -1,4 +1,4 @@
-.button {
+.btn-button {
     backface-visibility: hidden;
     position: relative;
     cursor: pointer;
@@ -9,6 +9,7 @@
     border: 3px solid #ffffff;
     padding: 13px 16px 12px 16px;
     color: #ffffff;
+    height: 54px;
     font-size: 16px;
     font-family: arial, serif;
     font-weight: 300;
@@ -16,61 +17,58 @@
     width: 100%;
 }
 
-@keyframes show-dot {
-    from {
-        width: 0px;
+
+@media screen and (max-width: 1024px) {
+    .btn-button {
+        font-size: 16px;
+        height: 50px;
     }
-    to {
-        width: 15px;
+}
+
+@media screen and (max-width: 640px) {
+    .btn-button {
+        font-size: 14px;
+        height: 46px;
     }
 }
 
 
-/*.loading:after {*/
-/*    overflow: hidden;*/
-/*    display: inline-block;*/
-/*    vertical-align: bottom;*/
-/*    animation: ellipsis 2s infinite;*/
-/*    content: "\2026";*/
-/*}*/
-
-/*@keyframes ellipsis {*/
-/*    from {*/
-/*        width: 2px;*/
-/*    }*/
-/*    to {*/
-/*        width: 15px;*/
-/*    }*/
-/*}*/
-
-
-
+.btn-button[disabled] {
+    cursor: not-allowed;
+    background: #999999;
+    transition: all .3s;
+}
 
 .btn-content {
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.button1 {
-    width: 70px;
-    text-align: center;
+/* Button Loading Start */
+
+.btn-loading-wrapper {
+    /*display: flex;*/
 }
 
-.dot-true {
+.btn-loading-start {
     opacity: 1;
-    width: unset;
-    animation: show-dot 1s ease-in-out both;
+    animation: show-dot .3s ease-in-out both;
 }
 
-.dot-false {
-    opacity: 0;
-    width: 0;
-    animation: hidden-dot;
+@keyframes show-dot {
+    from {
+        width: 0;
+        opacity: 0;
+    }
+    to {
+        width: 20px;
+        opacity: 1;
+    }
 }
 
-
-.dot {
+.btn-loading-dot {
     width: 6px;
     height: 6px;
     background-color: #ffffff;
@@ -78,21 +76,21 @@
 
     border-radius: 100%;
     display: inline-block;
-    -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
-    animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+    -webkit-animation: sk-bounce-delay 1.4s infinite ease-in-out both;
+    animation: sk-bounce-delay 1.4s infinite ease-in-out both;
 }
 
-.button .bounce1 {
+.bounce1 {
     -webkit-animation-delay: -0.32s;
     animation-delay: -0.32s;
 }
 
-.button .bounce2 {
+.bounce2 {
     -webkit-animation-delay: -0.16s;
     animation-delay: -0.16s;
 }
 
-@-webkit-keyframes sk-bouncedelay {
+@-webkit-keyframes sk-bounce-delay {
     0%, 80%, 100% {
         -webkit-transform: scale(0)
     }
@@ -101,7 +99,7 @@
     }
 }
 
-@keyframes sk-bouncedelay {
+@keyframes sk-bounce-delay {
     0%, 80%, 100% {
         -webkit-transform: scale(0);
         transform: scale(0);
@@ -111,3 +109,5 @@
         transform: scale(1.0);
     }
 }
+
+/* Button Loading End */
