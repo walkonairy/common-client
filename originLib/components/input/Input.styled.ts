@@ -111,14 +111,11 @@ export const InputIcon = styled.div`
 
 export const InputErrorMessage = styled.div`
   color: ${theme.colors.semantics.error};
-  font-size: 16px;
+  font-size: 14px;
   padding-left: 8px;
 
-  @media (max-width: ${theme.breakpoints.lg}) {
-    font-size: 14px;
-  }
   @media (max-width: ${theme.breakpoints.md}) {
-    font-size: 14px;
+    font-size: 12px;
   }
   @media (max-width: ${theme.breakpoints.sm}) {
     font-size: 12px;
