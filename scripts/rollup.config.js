@@ -29,25 +29,26 @@ function mkdirsSync(dirname) {
     }
   }
 }
-function delDir(path) {
-  let files = [];
-  if (fs.existsSync(path)) {
-    files = fs.readdirSync(path);
-    files.forEach((file) => {
-      let curPath = path + "/" + file;
-      if (fs.statSync(curPath).isDirectory()) {
-        delDir(curPath);
-      } else {
-        fs.unlinkSync(curPath);
-      }
-    });
-    fs.rmdirSync(path);
-  }
-}
+
+// function delDir(path) {
+//   let files = [];
+//   if (fs.existsSync(path)) {
+//     files = fs.readdirSync(path);
+//     files.forEach((file) => {
+//       let curPath = path + "/" + file;
+//       if (fs.statSync(curPath).isDirectory()) {
+//         delDir(curPath);
+//       } else {
+//         fs.unlinkSync(curPath);
+//       }
+//     });
+//     fs.rmdirSync(path);
+//   }
+// }
 
 const directoriesLibPath = path.join(process.cwd(), directoriesLib);
 
-delDir(directoriesLibPath);
+// delDir(directoriesLibPath);
 
 function generatorFileTree(parentPath, targetPath) {
   const complatePath = path.join(parentPath, targetPath);
@@ -128,6 +129,8 @@ const baseInputs = entrys
   .map(({ relative, fileName }) => {
     let extname = path.extname(fileName);
     const fileNameWithOutPostfix = fileName.replace(extname, "");
+    console.log("===========fileNameWithOutPostfix", fileNameWithOutPostfix);
+    console.log("===========relative", relative);
     const dir = path.join(
       process.cwd(),
       directoriesLib,

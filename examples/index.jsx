@@ -9,7 +9,7 @@ import { store } from "../originLib/redux/store";
 import ExInput from "./__input__/ExInput";
 import EXButton from "./__button__/ExButton";
 
-import { theme } from "../originLib";
+import { theme } from "../originLib/components/theme";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 

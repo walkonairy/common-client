@@ -29,6 +29,7 @@ export type ButtonProps = Partial<AnchorButtonProps>;
 
 const btnWrapperId = `btn-${Math.random().toString(36).slice(-8)}`;
 const loadingWrapperId = `btn-loading-${Math.random().toString(36).slice(-8)}`;
+
 const Button = forwardRef((props: ButtonProps, ref: React.RefObject<any>) => {
   const { children, id, loading = false, disabled = false, ...rest } = props;
   const _btnWrapperId = id || btnWrapperId;
@@ -56,7 +57,10 @@ const Button = forwardRef((props: ButtonProps, ref: React.RefObject<any>) => {
       className="btn-button"
       ref={ref}
       disabled={disabled}
-      _hover={{ filter: disabled ? "unset" : "brightness(1.2)" }}
+      _hover={{
+        filter: disabled ? "unset" : "brightness(1.2)",
+        transition: "all .3s",
+      }}
       {...rest}
     >
       <div className="btn-content">

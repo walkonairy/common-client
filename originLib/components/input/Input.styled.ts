@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import { theme } from "../theme";
 
 export const InputWrapper = styled.div`
-  padding: 2px;
+  padding: 3px 3px 2px 3px;
   border-radius: 18px;
   background: #333643;
   box-sizing: border-box;
@@ -13,14 +13,16 @@ export const InputWrapper = styled.div`
   }
 `;
 
-export const InputBorder = styled.div`
+export const InputBorder: any = styled.div`
   padding: 0px 16px;
   border: 2px solid transparent;
-  border-radius: 15px;
+  border-radius: 16px;
   transition: all 0.3s;
 
   &: hover {
-    border: 2px solid #4490ee;
+    border: 2px solid
+      ${(props: any) =>
+        props?.error ? theme.colors.semantics.error : "#4490ee"};
   }
 
   @media (max-width: ${theme.breakpoints.lg}) {
@@ -46,11 +48,12 @@ export const InputContent = styled.div`
   width: 100%;
 `;
 
-export const InputLabel = styled.label`
+export const InputLabel: any = styled.label`
   font-size: 12px;
   line-height: 12px;
   margin-top: 8px;
-  color: #8e96a4;
+  color: ${(props: any) =>
+    props.error ? theme.colors.semantics.error : "#8e96a4"};
   cursor: text;
   font-weight: 600;
   text-transform: capitalize;
@@ -103,5 +106,21 @@ export const InputIcon = styled.div`
   }
   @media (max-width: ${theme.breakpoints.sm}) {
     margin-left: 8px;
+  }
+`;
+
+export const InputErrorMessage = styled.div`
+  color: ${theme.colors.semantics.error};
+  font-size: 16px;
+  padding-left: 8px;
+
+  @media (max-width: ${theme.breakpoints.lg}) {
+    font-size: 14px;
+  }
+  @media (max-width: ${theme.breakpoints.md}) {
+    font-size: 14px;
+  }
+  @media (max-width: ${theme.breakpoints.sm}) {
+    font-size: 12px;
   }
 `;

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button } from "../../originLib";
+import Button from "../../originLib/components/button";
 import { Box } from "@chakra-ui/react";
 
 function ExButton() {

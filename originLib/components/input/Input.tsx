@@ -1,9 +1,4 @@
-import React, {
-  AnchorHTMLAttributes,
-  MouseEventHandler,
-  forwardRef,
-  MouseEvent,
-} from "react";
+import React, { forwardRef, MouseEvent } from "react";
 
 import { useMediaQuery } from "@chakra-ui/react";
 
@@ -15,17 +10,10 @@ import {
   _Input,
   InputIcon,
   InputBorder,
+  InputErrorMessage,
 } from "./Input.styled";
 import "./input.css";
 import { theme } from "../theme";
-
-export type AnchorInputProps = {
-  href: string;
-  target?: string;
-  onClick?: MouseEventHandler<HTMLElement>;
-} & BaseInputProps &
-  // 去除AnchorHTMLAttributes<any>中的type和onClick
-  Omit<AnchorHTMLAttributes<any>, "onClick">;
 
 export interface BaseInputProps {
   id?: string;
@@ -34,12 +22,18 @@ export interface BaseInputProps {
   label?: string;
   suffixIcon?: React.ReactNode;
   onClickSuffixIcon?: (e: MouseEvent<HTMLDivElement>) => void;
+  errorMessage?: string;
 }
 
-export type InputProps = Partial<AnchorInputProps>;
-
-const Input = forwardRef((props: InputProps, ref: React.RefObject<any>) => {
-  const { id, label = "", suffixIcon = "", onClickSuffixIcon, ...rest } = props;
+const Input = forwardRef((props: BaseInputProps, ref: React.RefObject<any>) => {
+  const {
+    id,
+    label = "",
+    suffixIcon = "",
+    onClickSuffixIcon,
+    errorMessage = "1",
+    ...rest
+  } = props;
 
   const [lessThanEqual640] = useMediaQuery(
     `(max-width: ${theme.breakpoints.md})`
@@ -53,11 +47,14 @@ const Input = forwardRef((props: InputProps, ref: React.RefObject<any>) => {
   return (
     <React.Fragment>
       <InputWrapper>
-        <InputBorder>
+        <InputBorder error={!!errorMessage}>
           <InputBox>
             <InputContent>
               {label && (
-                <InputLabel htmlFor={id || label || "input-label"}>
+                <InputLabel
+                  htmlFor={id || label || "input-label"}
+                  error={!!errorMessage}
+                >
                   {label}
                 </InputLabel>
               )}
@@ -74,6 +71,7 @@ const Input = forwardRef((props: InputProps, ref: React.RefObject<any>) => {
           </InputBox>
         </InputBorder>
       </InputWrapper>
+      {errorMessage && <InputErrorMessage>This is required</InputErrorMessage>}
     </React.Fragment>
   );
 });
